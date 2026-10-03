@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mapclimbmarketing.com/sitemap.xml
