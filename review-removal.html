@@ -42,6 +42,7 @@ body{margin:0;background:#000}
 :where(#mc-root) :where(ul,ol){margin:0;padding:0;list-style:none}
 :where(#mc-root) button{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer;-webkit-appearance:none;appearance:none}
 :where(#mc-root) :focus-visible{outline:2px solid var(--lime);outline-offset:3px}
+.mc-sr{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .mc-main{display:block}
 .mc-container{width:100%;max-width:1320px;margin:0 auto;padding:0 12px}
 @media (min-width:576px){.mc-container{max-width:540px}}
@@ -285,6 +286,7 @@ html.mc-modal-open #wmc-root,html.mc-lock #wmc-root{display:none!important}
 .sp-checks li{position:relative;padding-left:38px;font:400 15px/22.5px var(--font-body)}
 .sp-ck{position:absolute;left:0;top:50%;transform:translateY(-50%);width:22px;height:22px;border-radius:50%;background:var(--lime);display:flex;align-items:center;justify-content:center;color:#fff}
 .sp-ck svg{width:12px;height:12px}
+.sp-ck--ring{box-shadow:inset 0 0 0 1px rgba(0,0,0,.38)}
 .sp-hero{position:relative;background:#000;padding:0 0 32px}
 .sp-hero__band{position:relative;height:360px;overflow:hidden;background:#15171A}
 .sp-hero__band img{width:100%;height:100%;object-fit:cover;object-position:50% 46%}
@@ -300,6 +302,40 @@ html.mc-modal-open #wmc-root,html.mc-lock #wmc-root{display:none!important}
 .sp-hero__list{gap:16px;margin:24px 0;padding:0}
 .sp-hero__list li{align-items:center;gap:16px}
 .sp-hero__list svg{margin-top:0}}
+.sp-intro__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:80px;align-items:center}
+.sp-intro__media{position:relative;margin:0;border-radius:14px;overflow:hidden;aspect-ratio:4/3;background:#0F131B;box-shadow:0 18px 40px rgba(17,20,26,.18)}
+.sp-callout__media img{width:100%;height:100%;object-fit:cover}
+.sp-intro__txt{text-align:center}
+.sp-intro__txt .sp-p{margin-top:16px}
+.sp-intro__txt .sp-p + .sp-p{margin-top:15px}
+.sp-intro__txt .mc-btn{margin-top:24px}
+@media (min-width:576px){.sp-intro__txt{text-align:left}}
+@media (min-width:992px){.sp-intro__grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:48px}}
+.sp-glance__wrap{max-width:1076px;margin:0 auto;border:1px solid rgba(128,128,128,.32);border-radius:16px;overflow:auto;-webkit-overflow-scrolling:touch}
+.sp-glance table{width:100%;border-collapse:collapse;text-align:left}
+.sp-glance caption{caption-side:top;text-align:left;padding:18px 20px 12px;font:700 13px/19.5px var(--font-body);text-transform:uppercase;letter-spacing:1.04px;color:var(--text-body)}
+.sp-glance th,.sp-glance td{padding:12px 14px;border-top:1px solid rgba(128,128,128,.25);vertical-align:top;font:400 14px/21px var(--font-body);color:var(--text-body)}
+.sp-glance thead th{background:var(--ink);border-top:0;font:700 13px/19.5px var(--font-body);text-transform:uppercase;letter-spacing:.52px;color:#fff}
+.sp-glance tbody th{width:107px;font-weight:700}
+.sp-glance a{color:var(--text-body);text-decoration:underline;text-decoration-color:var(--lime);text-decoration-thickness:2px;text-underline-offset:4px;transition:opacity .2s}
+.sp-glance a:hover{opacity:.8}
+@media (min-width:992px){.sp-glance th,.sp-glance td{padding:14px 20px;font-size:15px;line-height:22.5px;vertical-align:middle}
+.sp-glance thead th{font-size:13px;line-height:19.5px}
+.sp-glance tbody th{width:173px}}
+.sp-callout__card{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;align-items:center;padding:40px 20px;background:var(--gray-50);border-radius:16px;box-shadow:0 8px 16px rgba(0,0,0,.08)}
+.sp-callout__media{margin:0;border-radius:16px;overflow:hidden;aspect-ratio:4/3;background:#0C0F14;box-shadow:0 8px 16px rgba(0,0,0,.08)}
+@media (max-width:575.98px){.sp-callout__media{aspect-ratio:34 / 30;margin:0 -20px;border-radius:0;box-shadow:none}}
+.sp-callout__txt{text-align:center}
+.sp-callout__txt h2{font:700 18px/21.6px var(--font-alt);text-transform:uppercase;color:#000;padding:0 24px}
+.sp-callout__txt .sp-p{margin-top:16px}
+.sp-callout__txt h2 + .sp-p{margin-top:25px}
+.sp-callout__txt b{font-weight:700;color:var(--ink)}
+@media (min-width:576px){.sp-callout__txt{text-align:left}
+.sp-callout__txt h2{padding:0}}
+@media (min-width:992px){.sp-callout__card{grid-template-columns:repeat(2,minmax(0,1fr));gap:48px;padding:48px}
+.sp-callout__media{order:2}
+.sp-callout__txt h2{font-size:24px;line-height:28.8px}
+.sp-callout__txt h2 + .sp-p{margin-top:24px}}
 .sp-pill__head{max-width:856px;margin:0 auto;text-align:center}
 .sp-pill__head .sp-p{margin-top:16px;color:#fff}
 .sp-pill__list{max-width:636px;margin:40px auto 0;gap:8px}
@@ -307,6 +343,39 @@ html.mc-modal-open #wmc-root,html.mc-lock #wmc-root{display:none!important}
 .sp-pill__icon{width:109px;height:109px;border-radius:50%;background:#000;border:1px solid var(--lime-55);display:flex;align-items:center;justify-content:center;color:var(--lime)}
 .sp-pill__icon svg{width:34px;height:34px}
 @media (min-width:992px){.sp-pill__list{gap:16px}}
+.sp-cmp__head{max-width:736px;margin:0 auto;text-align:center}
+.sp-cmp__head .sp-p{margin-top:16px}
+.sp-cmp__scroll{margin:64px -12px 0;padding:0 12px 32px;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+.sp-cmp__box{position:relative;width:700px}
+.sp-cmp__panel{position:absolute;left:0;right:0;top:67px;bottom:0;background:var(--gray-100);border-radius:16px}
+.sp-cmp__lime{position:absolute;top:0;left:220px;width:179px;height:24px;background:var(--lime)}
+.sp-cmp__hl{position:absolute;top:0;bottom:-31px;left:220px;width:179px;background:var(--ink);border-radius:16px}
+.sp-cmp table{position:relative;z-index:1;width:100%;border-collapse:collapse;table-layout:fixed}
+.sp-cmp th,.sp-cmp td{font:400 14px/21px var(--font-body);color:var(--text-body)}
+.sp-cmp thead th{height:90px;padding:24px 1px;font-weight:700;text-transform:uppercase;text-align:center;vertical-align:middle}
+.sp-cmp thead th span{display:inline-block;padding:0 8px}
+.sp-cmp .is-hl{color:#fff}
+.sp-cmp tbody td{height:117px;padding:16px;text-align:center;vertical-align:middle}
+.sp-cmp tbody tr + tr td:not(.is-hl){border-top:1px solid rgba(130,130,130,.2)}
+.sp-cmp tbody td.sp-cmp__lbl{text-align:left}
+.sp-cmp__lbl div{display:flex;align-items:center;gap:10px}
+.sp-cmp__lbl svg{flex:0 0 21px;width:21px;height:21px;color:var(--ink)}
+.sp-cmp__lbl strong{font-weight:700}
+.sp-cmp col.c1{width:220px}
+.sp-cmp col.c2{width:179px}
+.sp-cmp col.c3{width:147px}
+.sp-cmp col.c4{width:154px}
+@media (min-width:992px){.sp-cmp__scroll{margin:88px 0 0;padding:0 0 24px;overflow:visible}
+.sp-cmp__box{width:1024px;max-width:100%;margin:0 auto}
+.sp-cmp__panel{left:-24px;right:-24px;bottom:-23px}
+.sp-cmp__lime,.sp-cmp__hl{left:24.6%;width:28.6%}
+.sp-cmp__hl{bottom:-59px}
+.sp-cmp thead th{height:93px;padding:24px 1px 48px;vertical-align:top}
+.sp-cmp tbody td{height:96px;padding:16px 32px}
+.sp-cmp col.c1{width:24.6%}
+.sp-cmp col.c2{width:28.6%}
+.sp-cmp col.c3{width:22.85%}
+.sp-cmp col.c4{width:23.95%}}
 .sp-basic__in{max-width:636px;margin:0 auto}
 .sp-basic__in h2{text-align:center}
 .sp-basic__in .sp-p{margin-top:24px}
@@ -415,10 +484,8 @@ html:not(.mc-tz) #wmc-root #wmc-teaser{display:none!important}
 @keyframes lp-rr-txt{0%,55%{opacity:1}59%,92%{opacity:.4}97%,100%{opacity:1}}
 .lp-main .mc-kicker{display:block;margin:0 0 12px;font:600 16px/19.2px var(--font-body);text-transform:capitalize;letter-spacing:0;color:var(--text-eyebrow)}
 .lp-main .sp-black .mc-kicker,.lp-main .sp-ind .mc-kicker,.lp-main .sp-rel .mc-kicker{color:var(--text-eyebrow)}
-.lp-center{text-align:center}
 .lp-btns{display:flex;flex-wrap:wrap;gap:16px;margin-top:28px}
 .lp-hero2 .sp-hero__band > img{width:100%;height:100%;object-fit:cover}
-.lp-art{display:block;width:100%;height:100%}
 .lp-hero2__lead{max-width:760px;margin-top:20px;font:400 16px/25.6px var(--font-body);color:var(--on-dark-72)}
 @media (min-width:992px){.lp-hero2{padding-top:0}
 .lp-hero2 .sp-hero__band{height:520px}
@@ -432,7 +499,6 @@ html:not(.mc-tz) #wmc-root #wmc-teaser{display:none!important}
 .lp-bc [aria-current]{font-weight:600;color:#111}
 .lp-two__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:40px;align-items:center}
 @media (min-width:992px){.lp-two__grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:48px}}
-.lp-two__media{margin:0;border-radius:16px;overflow:hidden;aspect-ratio:4 / 3;background:#08090A}
 .lp-two__txt .sp-p{margin-top:16px}
 .lp-two__txt .mc-btn{margin-top:28px}
 .lp-two__list{margin-top:24px;gap:18px}
@@ -441,7 +507,6 @@ html:not(.mc-tz) #wmc-root #wmc-teaser{display:none!important}
 .lp-two__list b,.sp-basic b,.lp-proc__list b{font-weight:700;color:var(--ink)}
 .lp-fix{display:block;margin-top:6px}
 .lp-fix b{font-weight:700}
-@media (max-width:991.98px){.lp-two--rev .lp-two__media{order:-1}}
 @media (max-width:575.98px){.lp-two__txt{text-align:left}}
 .lp-note{max-width:856px;margin:24px auto 0;text-align:center}
 .lp-note--dark{color:var(--on-dark-72)}
@@ -474,11 +539,14 @@ html:not(.mc-tz) #wmc-root #wmc-teaser{display:none!important}
 .lp-price2 .sp-incl__txt{max-width:none}}
 .lp-guides2 .sp-p{margin-top:12px;max-width:760px;color:var(--on-dark-72)}
 .lp-guides2 .sp-rel__grid{margin-top:32px}
-.lp-cta2__art .lp-art{height:100%}
-@media (max-width:991.98px){.sp-cta .lp-cta2__art{height:200px}}
 .lp-price2 .sp-incl__txt .sp-ck{left:0}
 .lp-note svg{flex:0 0 18px;width:18px;height:18px;margin-top:2px}
-.lp-note:has(> svg){display:flex;align-items:flex-start;justify-content:center;gap:10px;text-align:left}</style>
+.lp-note:has(> svg){display:flex;align-items:flex-start;justify-content:center;gap:10px;text-align:left}
+.lp-price2__art img,.sp-intro__media img{display:block;width:100%;height:100%;object-fit:cover}
+@media (min-width:1200px){.lp-panel.lp-panel--4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.lp-panel--4 .lp-panel__item:not(:nth-child(3n+1))::before{content:none}
+.lp-panel--4 .lp-panel__item:not(:nth-child(4n+1))::before{content:"";position:absolute;left:0;top:0;width:1px;height:60px;background:var(--line-d-20)}
+.lp-panel--4 .lp-panel__item h3{font-size:18px;line-height:23px}}</style>
 <style id="mc-phone-css">.mc-nav__phone{display:inline-flex;align-items:center;gap:8px;font:500 14px/1 var(--font-body);color:#fff;white-space:nowrap;transition:color .2s}.mc-nav__phone svg{flex:0 0 24px;width:24px;height:24px;color:var(--brand-blue)}.mc-nav__phone:hover,.mc-nav__phone:focus-visible{color:var(--lime)}.mc-nav__phone span{display:none}.mc-nav__phone{min-height:44px}.mc-nav__phone{min-width:44px;justify-content:center}@media (min-width:1400px){.mc-nav__phone{min-width:0;justify-content:flex-start}.mc-nav__phone span{display:inline}}.mc-nav__call{display:none}@media (max-width:1199.98px){.mc-nav__call{display:flex;align-items:center;justify-content:center;flex:0 0 40px;width:40px;height:40px;margin-left:auto;margin-right:-2px;border-radius:50%;border:1px solid var(--lime-55);background:transparent;color:var(--lime);transition:transform .2s,background .2s}.mc-nav__call:active{transform:scale(.94)}.mc-nav__call:hover{background:var(--lime-12)}.mc-nav__call svg{width:18px;height:18px}}.mc-oc__call{gap:10px}.mc-oc__call svg{width:17px;height:17px;color:var(--lime)}#wmc-root .wmc-tel{color:inherit;font-weight:700;text-decoration:underline;text-underline-offset:2px;white-space:nowrap}#wmc-root #wmc-bub{width:52px!important;height:52px!important;background:var(--lime,#D4FD52)!important;color:#19191C!important;box-shadow:0 0 0 1px rgba(0,0,0,.35),0 6px 18px rgba(0,0,0,.35)!important}#wmc-root #wmc-bub svg{width:23px;height:23px}#wmc-root #wmc-badge{display:none!important}html:not(.mc-tz) #wmc-root #wmc-teaser{display:none!important}#wmc-root #wmc-teaser{bottom:66px;background:#19191C;color:#fff;border:1px solid rgba(255,255,255,.12);border-radius:16px 16px 4px 16px;box-shadow:0 18px 40px rgba(0,0,0,.45)}#wmc-root #wmc-teaser b{color:#D4FD52}@media (max-width:575.98px){#wmc-root{right:16px!important;bottom:16px!important}#wmc-root #wmc-bub{width:48px!important;height:48px!important}}</style>
 </head>
 <body>
@@ -517,65 +585,94 @@ html:not(.mc-tz) #wmc-root #wmc-teaser{display:none!important}
   </div>
 </section>
 <!--crumbs--><nav class="lp-bc" aria-label="Breadcrumb"><div class="mc-container"><ol><li><a href="/">Home</a></li><li aria-hidden="true">/</li><li><a href="/services">Services</a></li><li aria-hidden="true">/</li><li><span aria-current="page">Review Removal</span></li></ol></div></nav><!--/crumbs-->
+<section class="sp-sec sp-white sp-intro lp-intro" id="overview" aria-labelledby="lp-intro-h">
+  <div class="mc-container">
+    <div class="sp-intro__grid">
+      <figure class="sp-intro__media"><img class="mc-ph" src="https://images.unsplash.com/photo-1620082691363-8283e2f7bf61?w=1250&amp;q=80&amp;auto=format&amp;fit=crop" srcset="https://images.unsplash.com/photo-1620082691363-8283e2f7bf61?w=360&amp;q=80&amp;auto=format&amp;fit=crop 360w, https://images.unsplash.com/photo-1620082691363-8283e2f7bf61?w=480&amp;q=80&amp;auto=format&amp;fit=crop 480w, https://images.unsplash.com/photo-1620082691363-8283e2f7bf61?w=640&amp;q=80&amp;auto=format&amp;fit=crop 640w, https://images.unsplash.com/photo-1620082691363-8283e2f7bf61?w=800&amp;q=80&amp;auto=format&amp;fit=crop 800w, https://images.unsplash.com/photo-1620082691363-8283e2f7bf61?w=1000&amp;q=80&amp;auto=format&amp;fit=crop 1000w, https://images.unsplash.com/photo-1620082691363-8283e2f7bf61?w=1250&amp;q=80&amp;auto=format&amp;fit=crop 1250w, https://images.unsplash.com/photo-1620082691363-8283e2f7bf61?w=1560&amp;q=80&amp;auto=format&amp;fit=crop 1560w, https://images.unsplash.com/photo-1620082691363-8283e2f7bf61?w=1950&amp;q=80&amp;auto=format&amp;fit=crop 1950w, https://images.unsplash.com/photo-1620082691363-8283e2f7bf61?w=2440&amp;q=80&amp;auto=format&amp;fit=crop 2440w" sizes="(min-width: 1200px) 808px, (min-width: 768px) 828px, 122vw" width="624" height="468" alt="A contractor in a hard hat on a phone call outside a job site" style="object-position:45% 50%" loading="lazy" decoding="async"></figure>
+      <div class="sp-intro__txt">
+        <h2 class="mc-display mc-h2 mc-dark" id="lp-intro-h">Review removal built on Google&#x27;s own rules</h2>
+        <p class="sp-p">Google&#x27;s content policies say who may post a review and what it may say. Reviews from fake accounts, rival companies, former staff and people who never hired you break those rules.</p><p class="sp-p">We read each review you send and match it to the policy it breaks. If it breaks no rule, we tell you before any work starts.</p>
+        <a class="mc-btn mc-btn--outline-black" href="/contact#get-started" data-mc-lead data-service="Review Removal" aria-haspopup="dialog">Got a Bad Review?</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="sp-sec sp-white sp-glance lp-glance2" aria-label="Review removal at a glance">
+  <div class="mc-container">
+    <div class="sp-glance__wrap">
+      <table>
+        <caption>Review removal at a glance</caption>
+        <thead><tr><th scope="col"><span class="mc-sr">Item</span></th><th scope="col">In plain words</th></tr></thead>
+        <tbody><tr><th scope="row">What we do</th><td>Report reviews that break Google&#x27;s policies and follow up until Google decides</td></tr><tr><th scope="row">How you pay</th><td>Only after a review is removed, at the price agreed on a quick call</td></tr><tr><th scope="row">What we need</th><td>The link to the review. No password or login</td></tr><tr><th scope="row">Who decides</th><td>Google. Removal is always Google&#x27;s decision</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+<section class="sp-sec sp-split sp-callout" aria-labelledby="lp-call-h">
+  <div class="mc-container">
+    <div class="sp-callout__card">
+      <figure class="sp-callout__media"><img class="mc-ph" src="https://images.unsplash.com/photo-1594394489799-88bf340a182d?w=1250&amp;q=80&amp;auto=format&amp;fit=crop" srcset="https://images.unsplash.com/photo-1594394489799-88bf340a182d?w=480&amp;q=80&amp;auto=format&amp;fit=crop 480w, https://images.unsplash.com/photo-1594394489799-88bf340a182d?w=640&amp;q=80&amp;auto=format&amp;fit=crop 640w, https://images.unsplash.com/photo-1594394489799-88bf340a182d?w=800&amp;q=80&amp;auto=format&amp;fit=crop 800w, https://images.unsplash.com/photo-1594394489799-88bf340a182d?w=1000&amp;q=80&amp;auto=format&amp;fit=crop 1000w, https://images.unsplash.com/photo-1594394489799-88bf340a182d?w=1250&amp;q=80&amp;auto=format&amp;fit=crop 1250w, https://images.unsplash.com/photo-1594394489799-88bf340a182d?w=1560&amp;q=80&amp;auto=format&amp;fit=crop 1560w, https://images.unsplash.com/photo-1594394489799-88bf340a182d?w=1950&amp;q=80&amp;auto=format&amp;fit=crop 1950w, https://images.unsplash.com/photo-1594394489799-88bf340a182d?w=2440&amp;q=80&amp;auto=format&amp;fit=crop 2440w" sizes="(min-width: 1200px) 746px, (min-width: 768px) 801px, 143vw" width="576" height="432" alt="Hands on a laptop next to a phone on a desk" style="object-position:50% 50%" loading="lazy" decoding="async"></figure>
+      <div class="sp-callout__txt">
+        <h2 id="lp-call-h">How long until Google decides?</h2>
+        <p class="sp-p">There is no fixed timeline. Google looks at each report on its own schedule, and some need a second request.</p><p class="sp-p">We keep following up and tell you every time a status changes.</p>
+      </div>
+    </div>
+  </div>
+</section>
 <section class="sp-sec sp-black sp-pill lp-pillx" id="what-can-be-removed" aria-labelledby="lp-pol-h">
   <div class="mc-container">
     <div class="sp-pill__head">
       <span class="mc-kicker">What can be removed</span>
       <h2 class="mc-display mc-h2" id="lp-pol-h">Reviews that break Google&#x27;s rules</h2>
-      <p class="sp-p">Google&#x27;s content policies spell out what a review may not say and who may not post one. These are the reasons we report under, matched to each review we look at.</p>
+      <p class="sp-p">Google&#x27;s content policies spell out what a review may not say and who may not post one. These are the reasons we report under.</p>
     </div>
-    <div class="lp-panel"><div class="lp-panel__item"><span class="sp-pill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="5" y="8" width="14" height="11" rx="2.5"/><path d="M12 8V4.8M10.2 4.5h3.6M2.8 12.5v3M21.2 12.5v3M9.5 16h5"/><path d="M9.3 12.3h.01M14.7 12.3h.01" stroke-width="2.6"/></svg></span><h3>Fake reviews and spam</h3><p>Reviews from fake accounts, posted in bursts, or the same words pasted across many profiles.</p></div><div class="lp-panel__item"><span class="sp-pill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9.5V20h16V9.5"/><path d="M3 9.5 4.8 4h14.4L21 9.5a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0z"/><path d="M9.5 20v-5h5v5"/></svg></span><h3>Competitors</h3><p>A rival company, or someone acting for one, reviewing you to pull your rating down.</p></div><div class="lp-panel__item"><span class="sp-pill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="9" cy="8.5" r="3.2"/><path d="M3 19.5a6 6 0 0 1 12 0"/><path d="M15.6 5.5a3.2 3.2 0 0 1 0 6M17.6 14.2A6 6 0 0 1 21 19.5"/></svg></span><h3>Former employees</h3><p>Current or former staff reviewing the company they worked for is a conflict of interest.</p></div><div class="lp-panel__item"><span class="sp-pill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10" cy="8" r="3.6"/><path d="M3.2 20a7 7 0 0 1 11-5.7"/><path d="m16.5 15.5 4.5 4.5M21 15.5 16.5 20"/></svg></span><h3>Never a customer</h3><p>Someone who never hired you or asked for a quote, describing a job that never happened.</p></div><div class="lp-panel__item"><span class="sp-pill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5h16v11H9.5L4 20z"/><path d="m10 8.5 4 4M14 8.5l-4 4"/></svg></span><h3>Off topic</h3><p>Rants about politics, the news or another business that say nothing about your work.</p></div><div class="lp-panel__item"><span class="sp-pill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4.5M12 17.5h.01"/></svg></span><h3>Harassment and hate</h3><p>Threats, personal attacks on your crew, or hateful language aimed at a person or group.</p></div><div class="lp-panel__item"><span class="sp-pill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3M12 14.3v2.6"/></svg></span><h3>Personal information</h3><p>Phone numbers, home addresses or other private details about you, your family or your staff.</p></div><div class="lp-panel__item"><span class="sp-pill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="m6 6 12 12"/></svg></span><h3>Profanity and explicit content</h3><p>Swearing, sexual content or graphic language that Google&#x27;s policies do not allow.</p></div></div>
-    <p class="sp-p lp-note lp-note--dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4.5M12 17.5h.01"/></svg><span><strong>Removal is always Google&#x27;s decision.</strong> We report each review under the reason that fits, then follow up. Google looks at it and decides.</span></p>
+    <div class="lp-panel lp-panel--4"><div class="lp-panel__item"><span class="sp-pill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="5" y="8" width="14" height="11" rx="2.5"/><path d="M12 8V4.8M10.2 4.5h3.6M2.8 12.5v3M21.2 12.5v3M9.5 16h5"/><path d="M9.3 12.3h.01M14.7 12.3h.01" stroke-width="2.6"/></svg></span><h3>Fake reviews and spam</h3><p>Fake accounts, reviews posted in bursts, or the same words pasted across many profiles.</p></div><div class="lp-panel__item"><span class="sp-pill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9.5V20h16V9.5"/><path d="M3 9.5 4.8 4h14.4L21 9.5a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0z"/><path d="M9.5 20v-5h5v5"/></svg></span><h3>Competitors</h3><p>A rival company, or someone acting for one, reviewing you to pull your rating down.</p></div><div class="lp-panel__item"><span class="sp-pill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="9" cy="8.5" r="3.2"/><path d="M3 19.5a6 6 0 0 1 12 0"/><path d="M15.6 5.5a3.2 3.2 0 0 1 0 6M17.6 14.2A6 6 0 0 1 21 19.5"/></svg></span><h3>Former employees</h3><p>Current or former staff reviewing the company they worked for.</p></div><div class="lp-panel__item"><span class="sp-pill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10" cy="8" r="3.6"/><path d="M3.2 20a7 7 0 0 1 11-5.7"/><path d="m16.5 15.5 4.5 4.5M21 15.5 16.5 20"/></svg></span><h3>Never a customer</h3><p>Someone who never hired you, describing a job that never happened.</p></div><div class="lp-panel__item"><span class="sp-pill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 5h16v11H9.5L4 20z"/><path d="m10 8.5 4 4M14 8.5l-4 4"/></svg></span><h3>Off topic</h3><p>Rants about politics, the news or another business that say nothing about your work.</p></div><div class="lp-panel__item"><span class="sp-pill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4.5M12 17.5h.01"/></svg></span><h3>Harassment and hate</h3><p>Threats, personal attacks on your crew, or hateful language.</p></div><div class="lp-panel__item"><span class="sp-pill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3M12 14.3v2.6"/></svg></span><h3>Personal information</h3><p>Phone numbers, home addresses or other private details about you or your staff.</p></div><div class="lp-panel__item"><span class="sp-pill__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="m6 6 12 12"/></svg></span><h3>Profanity and explicit content</h3><p>Swearing, sexual content or graphic language Google does not allow.</p></div></div>
+    <p class="sp-p lp-note lp-note--dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4 2.5 20h19z"/><path d="M12 10v4.5M12 17.5h.01"/></svg><span><strong>Removal is always Google&#x27;s decision.</strong> We report each review under the reason that fits and follow up until Google decides.</span></p>
   </div>
 </section>
-<section class="sp-sec lp-gray lp-two lp-two--rev" id="what-stays" aria-labelledby="lp-mis-h">
+<section class="sp-sec sp-white sp-cmp" id="compare" aria-labelledby="lp-cmp-h">
+  <div class="mc-container">
+    <div class="sp-cmp__head">
+      <h2 class="mc-display mc-h2 mc-dark" id="lp-cmp-h">MapClimb next to the usual options</h2>
+      <p class="sp-p">How we compare with the other ways owners handle a review that breaks Google&#x27;s rules.</p>
+    </div>
+    <div class="sp-cmp__scroll" tabindex="0" aria-label="Comparison table, scroll sideways on small screens">
+      <div class="sp-cmp__box">
+        <div class="sp-cmp__panel" aria-hidden="true"></div>
+        <div class="sp-cmp__lime" aria-hidden="true"></div>
+        <div class="sp-cmp__hl" aria-hidden="true"></div>
+        <table>
+          <colgroup><col class="c1"><col class="c2"><col class="c3"><col class="c4"></colgroup>
+          <thead><tr><th scope="col"><span class="mc-sr">What you get</span></th><th scope="col" class="is-hl"><span>MapClimb</span></th><th scope="col"><span>Typical removal company</span></th><th scope="col"><span>Doing it yourself</span></th></tr></thead>
+          <tbody><tr><td class="sp-cmp__lbl"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 4v16M7.5 20h9M5 7h14"/><path d="M5 7 2.5 13a3 3 0 0 0 5 0zM19 7l-2.5 6a3 3 0 0 0 5 0z"/></svg><strong>When you pay</strong></div></td><td class="is-hl">Only after a review is removed</td><td>Varies, sometimes up front</td><td>No fee, but it costs your time</td></tr><tr><td class="sp-cmp__lbl"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg><strong>Honest answers</strong></div></td><td class="is-hl">We say when a review breaks no rule</td><td>Varies by company</td><td>Hard to tell what qualifies</td></tr><tr><td class="sp-cmp__lbl"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg><strong>The report</strong></div></td><td class="is-hl">Matched to the policy it breaks</td><td>Often one reason for every review</td><td>Easy to pick the wrong reason</td></tr><tr><td class="sp-cmp__lbl"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 7 4 12l5 5"/><path d="M4 12h10a6 6 0 0 1 6 6v1"/></svg><strong>Follow up</strong></div></td><td class="is-hl">Followed up until Google decides</td><td>Some stop after one try</td><td>Easy to lose track</td></tr><tr><td class="sp-cmp__lbl"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3M12 14.3v2.6"/></svg><strong>Your login</strong></div></td><td class="is-hl">No password or login needed</td><td>Some ask for owner access</td><td>Your own account</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="sp-sec sp-white sp-basic lp-report" id="updates" aria-labelledby="lp-rep-h">
+  <div class="mc-container">
+    <div class="sp-basic__in">
+      <h2 class="mc-display mc-h3 mc-dark" id="lp-rep-h">Every review tracked, start to finish</h2>
+      <p class="sp-p">You get one running list of the reviews we report: the policy reason we used and where each one stands with Google. Companies with several locations get one list across every profile.</p>
+      <ul class="sp-checks"><li><span class="sp-ck sp-ck--ring" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.2 4.2L19 7"/></svg></span>See each review we reported and why.</li><li><span class="sp-ck sp-ck--ring" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.2 4.2L19 7"/></svg></span>See which ones Google removed and which it kept.</li><li><span class="sp-ck sp-ck--ring" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.2 4.2L19 7"/></svg></span>Know what we are doing next on each one.</li></ul>
+    </div>
+  </div>
+</section>
+<section class="sp-sec lp-gray lp-two lp-two--text" id="what-stays" aria-labelledby="lp-mis-h">
   <div class="mc-container">
     <div class="lp-two__grid">
       <div class="lp-two__txt">
         <span class="mc-kicker">What usually stays</span>
         <h2 class="mc-display mc-h2 mc-dark" id="lp-mis-h">Honest reviews stay up, even the harsh ones</h2>
-        <p class="sp-p">We tell you this before any work starts. A review that follows the rules is not a removal case.</p>
-        <ul class="sp-checks lp-two__list"><li><span class="sp-ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.2 4.2L19 7"/></svg></span><b>A fair one star from a real customer.</b> They hired you and describe what happened. Even when it stings, it follows the rules and Google leaves it up. <span class="lp-fix"><b>What helps instead:</b> A short, calm reply and a review request after every job.</span></li><li><span class="sp-ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.2 4.2L19 7"/></svg></span><b>A job you remember differently.</b> A different memory of the price, the timing or the cleanup is not a policy break. Google does not referee job disputes. <span class="lp-fix"><b>What helps instead:</b> A polite reply with the facts and no private details.</span></li><li><span class="sp-ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.2 4.2L19 7"/></svg></span><b>Strong words with no rule broken.</b> Blunt language about your service is allowed. Threats, hate, profanity, personal details and unproven claims of crimes are what cross the line. <span class="lp-fix"><b>What helps instead:</b> A professional reply that shows the next reader how you handle problems.</span></li><li><span class="sp-ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.2 4.2L19 7"/></svg></span><b>A low rating with no text.</b> A star rating on its own rarely breaks a rule, unless it comes from a fake account, a rival or a former employee. <span class="lp-fix"><b>What helps instead:</b> More real reviews from recent jobs, so one rating carries less weight.</span></li></ul>
-        <a class="mc-btn mc-btn--outline-black" href="/contact#get-started" data-mc-lead data-service="Review Removal" aria-haspopup="dialog">Get Started</a>
+        <p class="sp-p">A review that follows the rules is not a removal case, and we tell you so before any work starts.</p>
+        <a class="mc-btn mc-btn--outline-black" href="/contact#get-started" data-mc-lead data-service="Review Removal" aria-haspopup="dialog">Got a Bad Review?</a>
       </div>
-      <figure class="lp-two__media"><svg class="lp-art" viewBox="0 0 640 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><defs><radialGradient id="lpa5c22bf-g" cx="0.500" cy="0.500" r=".55"><stop offset="0" stop-color="#D4FD52" stop-opacity=".3"/><stop offset=".4" stop-color="#D4FD52" stop-opacity=".07"/><stop offset="1" stop-color="#D4FD52" stop-opacity="0"/></radialGradient><pattern id="lpa5c22bf-d" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#fff" fill-opacity=".09"/></pattern></defs><rect width="640" height="480" fill="#08090A"/><rect width="640" height="480" fill="url(#lpa5c22bf-d)"/><rect width="640" height="480" fill="url(#lpa5c22bf-g)"/><g fill="none" stroke="#fff" stroke-opacity=".12"><circle cx="320" cy="240" r="171"/><circle cx="320" cy="240" r="248"/><circle cx="320" cy="240" r="342"/></g><circle cx="320" cy="240" r="110" fill="#0E0F11" stroke="#D4FD52" stroke-opacity=".6" stroke-width="1.5"/><svg x="262" y="182" width="116" height="116" viewBox="0 0 24 24" fill="none" stroke="#D4FD52" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg></svg></figure>
+      <div class="lp-two__txt"><ul class="sp-checks lp-two__list"><li><span class="sp-ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.2 4.2L19 7"/></svg></span><b>A fair one star from a real customer.</b> They hired you and describe what happened. Even when it stings, Google leaves it up. <span class="lp-fix"><b>What helps instead:</b> A short, calm reply and a review request after every job.</span></li><li><span class="sp-ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.2 4.2L19 7"/></svg></span><b>A job you remember differently.</b> A different memory of the price or the timing is not a policy break. <span class="lp-fix"><b>What helps instead:</b> A polite reply with the facts and no private details.</span></li><li><span class="sp-ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.2 4.2L19 7"/></svg></span><b>Strong words with no rule broken.</b> Blunt language about your service is allowed. Threats, hate and personal details are what cross the line. <span class="lp-fix"><b>What helps instead:</b> A calm reply that shows the next reader how you handle problems.</span></li><li><span class="sp-ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.2 4.2L19 7"/></svg></span><b>A low rating with no text.</b> A star rating on its own rarely breaks a rule, unless a fake account, a rival or a former employee left it. <span class="lp-fix"><b>What helps instead:</b> More real reviews from recent jobs.</span></li></ul></div>
     </div>
   </div>
 </section>
-<section class="sp-sec sp-black lp-proc" id="process" aria-labelledby="lp-steps-h"><span id="how-it-works" aria-hidden="true"></span>
-  <div class="mc-container">
-    <div class="sp-pill__head">
-      <span class="mc-kicker">How it works</span>
-      <h2 class="mc-display mc-h2" id="lp-steps-h">Four steps, and you pay last</h2>
-      <p class="sp-p">You send the review. We do the checking, the reporting and the follow up, and you hear from us when the status changes.</p>
-    </div>
-    <ul class="sp-checks sp-pill__list lp-proc__list"><li><span class="sp-ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.2 4.2L19 7"/></svg></span><b>Send us the link:</b> Open the review on Google, copy its link and text it to (865) 333-0353, or share it with us on a quick call.</li><li><span class="sp-ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.2 4.2L19 7"/></svg></span><b>We check the policies:</b> We read the review and the reviewer&#x27;s profile, then match it to the policy it breaks. If it breaks none, we tell you.</li><li><span class="sp-ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.2 4.2L19 7"/></svg></span><b>We report and follow up:</b> We report it through Google&#x27;s own process under the right reason, and keep following up until Google makes its decision.</li><li><span class="sp-ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.2 4.2L19 7"/></svg></span><b>You pay after removal:</b> If Google removes the review, you pay the price we agreed on the call. If it stays up, you owe nothing for it.</li></ul>
-    
-  </div>
-</section>
-<section class="sp-sec sp-white sp-basic" id="why-it-matters" aria-labelledby="lp-hl-h">
-  <div class="mc-container">
-    <div class="sp-basic__in">
-      <span class="mc-kicker lp-center">Why it matters</span>
-      <h2 class="mc-display mc-h2 mc-dark" id="lp-hl-h">Reviews sit right next to your name</h2>
-      <p class="sp-p">In the map pack your rating shows beside your listing, so a review that should not be there hurts twice: once in ranking and again when people decide who to call.</p>
-      <ul class="sp-checks "><li><span class="sp-ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.2 4.2L19 7"/></svg></span><b>Map pack: Part of how Google ranks.</b> Google says review count and score factor into local ranking. A fake one star pulls on a number that matters.</li><li><span class="sp-ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.2 4.2L19 7"/></svg></span><b>Calls: The newest reviews get read.</b> People skim the latest reviews before they tap call. A planted complaint near the top can send them to the next listing.</li><li><span class="sp-ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.2 4.2L19 7"/></svg></span><b>Trust: A profile that looks cared for.</b> Real reviews, calm replies and no planted attacks tell a homeowner you show up and stand behind the work.</li></ul>
-    </div>
-  </div>
-</section>
-<section class="sp-sec sp-white lp-two lp-two--text" id="who-it-is-for" aria-labelledby="lp-aud-h">
-  <div class="mc-container">
-    <div class="lp-two__grid">
-      <div class="lp-two__txt">
-        <span class="mc-kicker">Who it is for</span>
-        <h2 class="mc-display mc-h2 mc-dark" id="lp-aud-h">For contractors and multi location companies</h2>
-        <p class="sp-p">Any home service business with a Google Business Profile can send us a review. Two setups get the most out of it: companies with several profiles, and trades where crews and rivals change often.</p>
-      </div>
-      <div class="lp-two__txt"><ul class="sp-checks lp-two__list"><li><span class="sp-ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.2 4.2L19 7"/></svg></span><b>Multi location companies.</b> Each location&#x27;s profile is checked on its own, with one running list of what we reported, where, and the status of each.</li><li><span class="sp-ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.2 4.2L19 7"/></svg></span><b>Contractors and crews.</b> Crews change and competitors work the same streets. Reviews from former staff and rival companies are what the conflict of interest rule covers.</li><li><span class="sp-ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.2 4.2L19 7"/></svg></span><b>Owners on the road.</b> Text us the link from the truck. We handle the report, the follow up and the updates while you run jobs.</li></ul></div>
-    </div>
-  </div>
-</section>
-<section class="sp-sec sp-black lp-price2" id="pricing" aria-labelledby="lp-price-h">
+<section class="sp-sec sp-white lp-price2" id="pricing" aria-labelledby="lp-price-h">
   <div class="mc-container">
     <div class="sp-incl__card lp-price2__card">
       <div class="sp-incl__txt">
@@ -586,8 +683,19 @@ html:not(.mc-tz) #wmc-root #wmc-teaser{display:none!important}
         <ul class="sp-checks "><li><span class="sp-ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.2 4.2L19 7"/></svg></span>Every review checked against Google&#x27;s policies first</li><li><span class="sp-ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.2 4.2L19 7"/></svg></span>Reported and followed up until Google decides</li><li><span class="sp-ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.2 4.2L19 7"/></svg></span>Nothing to pay for reviews Google leaves up</li><li><span class="sp-ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.2 4.2L19 7"/></svg></span>No password or login to your profile needed</li></ul>
         <div class="lp-btns"><a class="mc-btn mc-btn--lime" href="/contact#get-started" data-mc-lead data-service="Review Removal" aria-haspopup="dialog">Get a Free Strategy Call</a></div>
       </div>
-      <figure class="lp-price2__art"><svg class="lp-art" viewBox="0 0 640 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><defs><radialGradient id="lpa5c22bf-g" cx="0.500" cy="0.500" r=".55"><stop offset="0" stop-color="#D4FD52" stop-opacity=".3"/><stop offset=".4" stop-color="#D4FD52" stop-opacity=".07"/><stop offset="1" stop-color="#D4FD52" stop-opacity="0"/></radialGradient><pattern id="lpa5c22bf-d" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#fff" fill-opacity=".09"/></pattern></defs><rect width="640" height="480" fill="#08090A"/><rect width="640" height="480" fill="url(#lpa5c22bf-d)"/><rect width="640" height="480" fill="url(#lpa5c22bf-g)"/><g fill="none" stroke="#fff" stroke-opacity=".12"><circle cx="320" cy="240" r="171"/><circle cx="320" cy="240" r="248"/><circle cx="320" cy="240" r="342"/></g><circle cx="320" cy="240" r="110" fill="#0E0F11" stroke="#D4FD52" stroke-opacity=".6" stroke-width="1.5"/><svg x="262" y="182" width="116" height="116" viewBox="0 0 24 24" fill="none" stroke="#D4FD52" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg></svg></figure>
+      <figure class="lp-price2__art"><img class="mc-ph" src="https://images.unsplash.com/photo-1652565436975-5ac0c22fb3ee?w=1250&amp;q=80&amp;auto=format&amp;fit=crop" srcset="https://images.unsplash.com/photo-1652565436975-5ac0c22fb3ee?w=360&amp;q=80&amp;auto=format&amp;fit=crop 360w, https://images.unsplash.com/photo-1652565436975-5ac0c22fb3ee?w=480&amp;q=80&amp;auto=format&amp;fit=crop 480w, https://images.unsplash.com/photo-1652565436975-5ac0c22fb3ee?w=640&amp;q=80&amp;auto=format&amp;fit=crop 640w, https://images.unsplash.com/photo-1652565436975-5ac0c22fb3ee?w=800&amp;q=80&amp;auto=format&amp;fit=crop 800w, https://images.unsplash.com/photo-1652565436975-5ac0c22fb3ee?w=1000&amp;q=80&amp;auto=format&amp;fit=crop 1000w, https://images.unsplash.com/photo-1652565436975-5ac0c22fb3ee?w=1250&amp;q=80&amp;auto=format&amp;fit=crop 1250w, https://images.unsplash.com/photo-1652565436975-5ac0c22fb3ee?w=1560&amp;q=80&amp;auto=format&amp;fit=crop 1560w, https://images.unsplash.com/photo-1652565436975-5ac0c22fb3ee?w=1950&amp;q=80&amp;auto=format&amp;fit=crop 1950w, https://images.unsplash.com/photo-1652565436975-5ac0c22fb3ee?w=2440&amp;q=80&amp;auto=format&amp;fit=crop 2440w" sizes="(min-width: 1200px) 694px, (min-width: 768px) 782px, 109vw" width="536" height="402" alt="A business owner on the phone taking notes at his desk" style="object-position:50% 50%" loading="lazy" decoding="async"></figure>
     </div>
+  </div>
+</section>
+<section class="sp-sec sp-black lp-proc" id="process" aria-labelledby="lp-steps-h"><span id="how-it-works" aria-hidden="true"></span>
+  <div class="mc-container">
+    <div class="sp-pill__head">
+      <span class="mc-kicker">How it works</span>
+      <h2 class="mc-display mc-h2" id="lp-steps-h">Four steps, and you pay last</h2>
+      <p class="sp-p">You send the review. We check it, report it and follow up, and you hear from us when the status changes.</p>
+    </div>
+    <ul class="sp-checks sp-pill__list lp-proc__list"><li><span class="sp-ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.2 4.2L19 7"/></svg></span><b>Send us the link:</b> Open the review on Google, copy its link and text it to (865) 333-0353, or share it on a quick call.</li><li><span class="sp-ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.2 4.2L19 7"/></svg></span><b>We check the policies:</b> We read the review and the reviewer&#x27;s profile, then match it to the policy it breaks. If it breaks none, we tell you.</li><li><span class="sp-ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.2 4.2L19 7"/></svg></span><b>We report and follow up:</b> We report it through Google&#x27;s own process under the right reason, and keep following up until Google makes its decision.</li><li><span class="sp-ck" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.2 4.2L19 7"/></svg></span><b>You pay after removal:</b> If Google removes the review, you pay the price we agreed on the call. If it stays up, you owe nothing for it.</li></ul>
+    
   </div>
 </section>
 <section class="sp-sec mc-bg-white mc-on-light sp-faq" id="faq" aria-labelledby="lp-faq-h">
@@ -613,7 +721,7 @@ html:not(.mc-tz) #wmc-root #wmc-teaser{display:none!important}
 <section class="sp-sec sp-split sp-cta" id="book" aria-labelledby="lp-cta-h">
   <div class="mc-container">
     <div class="sp-cta__box">
-      <figure class="sp-cta__photo lp-cta2__art"><svg class="lp-art" viewBox="0 0 648 537" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><defs><radialGradient id="lpab36cd8-g" cx="0.420" cy="0.500" r=".55"><stop offset="0" stop-color="#D4FD52" stop-opacity=".3"/><stop offset=".4" stop-color="#D4FD52" stop-opacity=".07"/><stop offset="1" stop-color="#D4FD52" stop-opacity="0"/></radialGradient><pattern id="lpab36cd8-d" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="#fff" fill-opacity=".09"/></pattern></defs><rect width="648" height="537" fill="#08090A"/><rect width="648" height="537" fill="url(#lpab36cd8-d)"/><rect width="648" height="537" fill="url(#lpab36cd8-g)"/><g fill="none" stroke="#fff" stroke-opacity=".12"><circle cx="272" cy="268" r="183"/><circle cx="272" cy="268" r="266"/><circle cx="272" cy="268" r="366"/></g><circle cx="272" cy="268" r="118" fill="#0E0F11" stroke="#D4FD52" stroke-opacity=".6" stroke-width="1.5"/><svg x="210" y="206" width="124" height="124" viewBox="0 0 24 24" fill="none" stroke="#D4FD52" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg></svg></figure>
+      <figure class="sp-cta__photo"><img class="mc-ph" src="https://images.unsplash.com/photo-1510535043828-3d1edc68071e?w=1250&amp;q=80&amp;auto=format&amp;fit=crop" srcset="https://images.unsplash.com/photo-1510535043828-3d1edc68071e?w=360&amp;q=80&amp;auto=format&amp;fit=crop 360w, https://images.unsplash.com/photo-1510535043828-3d1edc68071e?w=480&amp;q=80&amp;auto=format&amp;fit=crop 480w, https://images.unsplash.com/photo-1510535043828-3d1edc68071e?w=640&amp;q=80&amp;auto=format&amp;fit=crop 640w, https://images.unsplash.com/photo-1510535043828-3d1edc68071e?w=800&amp;q=80&amp;auto=format&amp;fit=crop 800w, https://images.unsplash.com/photo-1510535043828-3d1edc68071e?w=1000&amp;q=80&amp;auto=format&amp;fit=crop 1000w, https://images.unsplash.com/photo-1510535043828-3d1edc68071e?w=1250&amp;q=80&amp;auto=format&amp;fit=crop 1250w, https://images.unsplash.com/photo-1510535043828-3d1edc68071e?w=1560&amp;q=80&amp;auto=format&amp;fit=crop 1560w, https://images.unsplash.com/photo-1510535043828-3d1edc68071e?w=1950&amp;q=80&amp;auto=format&amp;fit=crop 1950w, https://images.unsplash.com/photo-1510535043828-3d1edc68071e?w=2440&amp;q=80&amp;auto=format&amp;fit=crop 2440w" sizes="(min-width: 1200px) 926px, (min-width: 768px) 824px, 108vw" width="648" height="537" alt="" style="object-position:60% 45%" loading="lazy" decoding="async"></figure>
       <svg class="sp-cta__splat" viewBox="0 0 300 140" fill="#fff" aria-hidden="true" focusable="false"><circle cx="165.9" cy="139.6" r="1.00"/><polygon points="296.8,53.5 295.6,55.2 292.9,54.7 292.9,53.0 293.9,51.2 296.3,52.6"/><polygon points="238.1,122.2 236.9,123.1 235.3,123.3 233.6,121.8 235.6,120.8 238.4,120.6"/><circle cx="157.5" cy="47.3" r="0.82"/><circle cx="247.4" cy="100.5" r="0.89"/><circle cx="282.0" cy="123.1" r="0.72"/><circle cx="247.6" cy="2.3" r="2.35"/><circle cx="297.7" cy="18.9" r="1.28"/><circle cx="214.1" cy="24.9" r="0.73"/><circle cx="275.9" cy="84.4" r="1.77"/><circle cx="242.5" cy="127.6" r="3.03"/><circle cx="288.9" cy="64.4" r="1.72"/><circle cx="2.1" cy="89.4" r="0.42"/><polygon points="295.6,25.2 294.0,26.7 292.8,26.0 291.5,24.7 293.8,23.8 295.4,23.9"/><circle cx="289.8" cy="49.3" r="2.72"/><circle cx="251.6" cy="3.3" r="0.82"/><circle cx="218.1" cy="138.0" r="0.93"/><circle cx="263.2" cy="1.1" r="1.83"/><circle cx="299.7" cy="85.6" r="0.57"/><polygon points="171.2,127.0 169.5,127.7 167.3,127.6 166.7,126.3 168.8,125.7 170.0,125.6"/><circle cx="236.1" cy="98.6" r="0.66"/><circle cx="285.8" cy="99.2" r="0.69"/><circle cx="0.4" cy="34.9" r="0.65"/><circle cx="218.2" cy="128.1" r="0.57"/><circle cx="300.0" cy="108.9" r="2.37"/><polygon points="147.0,55.7 144.1,57.2 142.3,56.0 141.1,54.7 143.3,53.9 144.9,54.6"/><circle cx="285.5" cy="79.0" r="0.99"/><circle cx="299.1" cy="137.4" r="3.23"/><circle cx="273.3" cy="66.3" r="1.17"/><circle cx="153.4" cy="119.6" r="0.64"/><polygon points="256.8,138.7 255.4,140.0 254.1,138.6 253.5,137.6 254.4,136.2 255.6,137.3"/><circle cx="294.6" cy="85.7" r="1.02"/><circle cx="282.9" cy="72.4" r="2.18"/><circle cx="47.8" cy="138.8" r="1.09"/><circle cx="258.4" cy="134.6" r="0.96"/><polygon points="300.8,25.8 297.8,26.8 294.0,28.1 295.2,24.5 295.8,22.3 299.5,23.7"/><circle cx="194.4" cy="27.0" r="0.72"/><circle cx="277.6" cy="132.4" r="0.97"/><circle cx="299.6" cy="54.2" r="1.71"/><circle cx="104.9" cy="136.0" r="2.09"/><circle cx="284.5" cy="116.4" r="1.30"/><circle cx="210.9" cy="64.6" r="1.30"/><circle cx="178.1" cy="92.1" r="0.92"/><circle cx="138.5" cy="140.0" r="2.83"/><circle cx="234.0" cy="11.3" r="1.18"/><circle cx="292.9" cy="21.7" r="1.58"/><circle cx="156.1" cy="110.3" r="0.83"/><circle cx="268.3" cy="103.7" r="1.48"/><circle cx="230.9" cy="128.1" r="0.92"/><circle cx="268.9" cy="67.3" r="0.64"/><circle cx="283.6" cy="139.6" r="2.47"/><circle cx="113.2" cy="100.2" r="0.88"/><circle cx="147.1" cy="23.3" r="0.51"/><polygon points="284.1,41.6 281.5,43.8 277.5,43.2 276.8,40.4 280.3,38.9 282.7,39.9"/><circle cx="85.2" cy="86.5" r="1.84"/><circle cx="290.0" cy="109.8" r="1.06"/><circle cx="240.4" cy="87.4" r="0.97"/><circle cx="245.0" cy="47.9" r="0.50"/><circle cx="254.3" cy="51.0" r="1.62"/><circle cx="127.8" cy="42.1" r="1.74"/><circle cx="232.7" cy="139.5" r="1.89"/><polygon points="83.4,18.0 82.1,19.6 79.1,19.3 78.1,17.5 79.6,16.0 82.5,16.4"/><circle cx="296.7" cy="139.7" r="1.62"/><circle cx="299.4" cy="125.0" r="0.97"/><circle cx="221.9" cy="135.6" r="2.33"/><circle cx="113.9" cy="132.0" r="0.63"/><circle cx="288.4" cy="118.4" r="1.31"/><circle cx="47.8" cy="110.8" r="0.84"/><circle cx="293.3" cy="3.6" r="1.24"/><circle cx="157.4" cy="138.1" r="0.55"/><circle cx="89.0" cy="136.2" r="2.06"/><circle cx="232.8" cy="54.7" r="1.10"/><circle cx="228.5" cy="51.6" r="1.58"/><circle cx="215.6" cy="116.8" r="1.45"/><circle cx="256.9" cy="25.8" r="1.06"/><circle cx="208.6" cy="130.1" r="1.82"/><circle cx="117.7" cy="62.6" r="1.80"/><circle cx="299.8" cy="120.2" r="1.09"/><circle cx="186.9" cy="97.7" r="1.67"/><circle cx="197.6" cy="113.7" r="1.20"/><circle cx="293.3" cy="130.0" r="3.18"/><circle cx="146.1" cy="130.1" r="1.18"/><circle cx="295.2" cy="129.8" r="0.98"/><polygon points="301.1,120.5 299.2,122.6 296.2,121.5 296.4,119.7 296.9,118.2 301.2,118.4"/><circle cx="289.9" cy="39.8" r="0.62"/><circle cx="293.6" cy="48.9" r="0.94"/><circle cx="184.5" cy="103.9" r="0.53"/><polygon points="280.7,59.8 278.9,62.0 276.8,60.6 276.3,59.5 277.5,58.0 279.5,58.5"/><circle cx="102.6" cy="79.0" r="1.01"/><circle cx="223.3" cy="119.2" r="1.24"/><circle cx="233.8" cy="117.1" r="0.68"/><circle cx="152.4" cy="29.9" r="0.43"/><circle cx="118.6" cy="98.1" r="1.08"/><circle cx="185.6" cy="72.3" r="0.59"/><circle cx="288.8" cy="106.2" r="1.87"/><polygon points="200.0,101.0 197.8,101.1 196.2,101.1 195.8,100.3 197.3,98.9 198.5,99.7"/><polygon points="275.3,135.9 273.1,136.2 269.7,136.4 267.4,134.4 271.9,132.1 274.5,131.9"/><circle cx="214.4" cy="57.9" r="1.09"/><circle cx="219.2" cy="97.9" r="0.86"/><circle cx="40.9" cy="92.6" r="0.53"/><circle cx="103.7" cy="105.7" r="2.55"/><circle cx="300.0" cy="56.1" r="2.14"/><circle cx="229.7" cy="96.1" r="2.82"/><circle cx="35.3" cy="28.0" r="0.67"/><circle cx="123.5" cy="59.9" r="1.44"/><circle cx="18.7" cy="134.9" r="1.25"/><polygon points="67.8,102.5 64.6,103.6 62.9,103.3 62.3,101.8 63.5,100.8 66.5,101.0"/><circle cx="24.3" cy="73.7" r="1.66"/><circle cx="299.2" cy="138.1" r="1.37"/><circle cx="101.0" cy="120.3" r="0.81"/><circle cx="287.0" cy="76.6" r="0.99"/><circle cx="186.4" cy="126.5" r="2.21"/><polygon points="303.1,41.7 300.9,44.2 298.0,42.8 297.4,40.3 298.8,38.5 302.3,38.7"/><circle cx="192.3" cy="63.4" r="0.49"/><circle cx="123.3" cy="35.5" r="0.76"/><circle cx="254.1" cy="72.0" r="0.85"/><circle cx="231.3" cy="81.5" r="0.63"/><circle cx="259.9" cy="105.7" r="2.95"/><circle cx="250.9" cy="93.6" r="0.88"/><circle cx="87.9" cy="96.5" r="1.23"/><circle cx="223.4" cy="137.8" r="1.05"/><circle cx="132.2" cy="4.5" r="2.06"/><circle cx="103.4" cy="139.9" r="2.11"/><polygon points="122.8,123.7 121.8,125.0 120.5,124.2 119.3,123.5 121.6,122.4 122.5,122.8"/><circle cx="28.4" cy="119.1" r="0.56"/><circle cx="201.9" cy="109.1" r="2.82"/><circle cx="124.6" cy="132.9" r="0.64"/><circle cx="146.1" cy="127.8" r="0.96"/><polygon points="298.0,63.7 295.4,65.3 294.5,64.4 292.7,62.8 294.5,62.3 297.3,62.5"/><circle cx="282.7" cy="36.1" r="0.91"/><circle cx="278.2" cy="47.0" r="0.51"/><circle cx="99.9" cy="135.9" r="0.83"/><polygon points="291.3,138.9 288.7,142.2 284.8,140.6 282.1,137.5 286.7,134.9 290.2,135.8"/><circle cx="299.4" cy="0.3" r="1.52"/><circle cx="270.6" cy="72.6" r="1.40"/><polygon points="184.2,121.0 181.9,122.4 179.9,121.0 179.5,119.8 180.5,118.5 182.4,119.3"/><circle cx="235.2" cy="67.1" r="0.82"/><circle cx="292.4" cy="138.4" r="3.22"/><circle cx="293.2" cy="113.5" r="1.90"/><circle cx="78.3" cy="111.8" r="0.87"/><polygon points="81.4,6.8 79.1,7.0 76.7,6.7 76.9,5.5 78.1,3.5 79.6,4.6"/><circle cx="168.2" cy="139.5" r="1.01"/><circle cx="227.7" cy="132.7" r="1.51"/><circle cx="289.2" cy="75.2" r="1.21"/><circle cx="236.0" cy="77.0" r="0.95"/><circle cx="294.0" cy="103.7" r="2.33"/><circle cx="263.9" cy="127.5" r="0.59"/><circle cx="265.4" cy="128.4" r="1.31"/><circle cx="293.4" cy="94.2" r="0.92"/><polygon points="141.6,94.1 141.8,95.4 139.1,94.6 138.6,93.3 140.3,92.9 141.4,92.8"/><circle cx="98.6" cy="75.2" r="1.18"/><polygon points="82.6,126.8 80.5,128.5 76.6,128.0 76.2,124.9 78.3,123.1 82.1,123.8"/><circle cx="290.4" cy="136.3" r="0.99"/><circle cx="111.3" cy="94.7" r="1.93"/><circle cx="60.7" cy="70.9" r="1.12"/><circle cx="230.9" cy="119.3" r="0.57"/><circle cx="250.2" cy="121.0" r="0.70"/><circle cx="211.6" cy="99.2" r="0.54"/><circle cx="275.7" cy="102.7" r="2.98"/><circle cx="169.1" cy="115.7" r="2.77"/><circle cx="268.8" cy="56.5" r="0.83"/><polygon points="188.0,134.3 187.2,135.9 185.4,134.9 183.3,133.0 186.4,131.3 188.0,132.1"/><circle cx="211.2" cy="139.8" r="1.04"/><circle cx="114.3" cy="130.0" r="0.83"/><polygon points="83.1,137.0 80.2,138.7 76.1,139.4 74.5,135.1 77.3,134.0 81.5,134.0"/><circle cx="277.4" cy="101.8" r="2.29"/><circle cx="277.2" cy="7.6" r="0.85"/><circle cx="269.3" cy="110.0" r="0.92"/><circle cx="295.0" cy="32.9" r="1.12"/><polygon points="291.8,102.2 289.2,103.7 287.3,102.4 286.6,100.8 288.0,99.8 289.9,100.1"/><circle cx="299.2" cy="18.0" r="0.79"/><circle cx="223.2" cy="75.6" r="0.52"/><circle cx="83.2" cy="86.4" r="2.39"/><circle cx="277.3" cy="71.6" r="0.65"/></svg>
       <div class="sp-cta__txt">
         <h2 class="mc-display mc-h2" id="lp-cta-h">Send us the review that breaks the rules</h2>
